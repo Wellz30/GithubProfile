@@ -6,7 +6,7 @@
     border: solid 2px orange;
     background-color: gray;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .search-container .title{
@@ -22,4 +22,20 @@
     border-radius: 10px;
     text-align: center;
     margin-left: 25%;
+    border: solid 1px black;
+}
+
+.button-search{
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+}
+
+.img-button{
+    width: 60%;
+    height: 60%;
 }

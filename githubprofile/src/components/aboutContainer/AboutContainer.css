@@ -1,0 +1,17 @@
+.about-container{
+    width: 30%;
+    height: 50px;
+    margin-left: 1.5%;
+    margin-top: 1.5%;
+}
+
+.amount{
+    font-size: 90%;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.text{
+    font-size: 90%;
+    text-align: center;
+}
