@@ -28,7 +28,7 @@ export default function App() {
             <SearchContainer searchButton={searchButton} searchedValue={searchedValue} setSearchedValue={setSearchedValue}/>
             <Container>
                 <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
-                <ProfileAbout bio={userData?.bio} amountRepos={"10"} amountFollowers={"10"} amountFollowing={"10"}/>
+                <ProfileAbout bio={userData?.bio} amountRepos={userData?.public_repos} amountFollowers={userData?.followers} amountFollowing={userData?.following}/>
             </Container>
         </>
     );
