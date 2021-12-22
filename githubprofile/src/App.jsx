@@ -4,18 +4,11 @@ import {SearchContainer} from "./components/searchContainer"
 import {ProfilePic} from "./components/profilePic"
 import {ProfileAbout} from "./components/profileAbout/index"
 import {AboutContainer} from "./components/aboutContainer/"
+import {CloseRepos} from "./components/closeRepos/"
 import client from "./services/client"
 
 
 export default function App() {
-
-    const repos = document.querySelector("#repos");
-
-    console.log(repos);
-
-    function abc(){
-        setShowRepos(true);
-    }
 
     const [showRepos, setShowRepos] = useState(false);
 
@@ -38,13 +31,13 @@ export default function App() {
             <SearchContainer searchButton={searchButton} searchedValue={searchedValue} setSearchedValue={setSearchedValue}/>
             {showRepos ? 
                 <Container>
-                    
+                    <CloseRepos closeRepos={() => {setShowRepos(false)}}/>
                 </Container> 
             :
                 <Container>
                     <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
                     <ProfileAbout bio={userData?.bio}>
-                        <AboutContainer amount={userData?.public_repos} text="Repositorios" onClick={abc}/>
+                        <AboutContainer amount={userData?.public_repos} text="Repositorios" onClick={()=>{setShowRepos(true)}}/>
                         <AboutContainer amount={userData?.followers} text="Seguidores"/>
                         <AboutContainer amount={userData?.following} text="Seguindo"/>
                     </ProfileAbout>

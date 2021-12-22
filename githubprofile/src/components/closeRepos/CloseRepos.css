@@ -1,0 +1,18 @@
+.title{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.button-close{
+    display: flex;
+    justify-content: right;
+}
+
+.button-close .button{
+    background-color: gray;
+    border: solid 2px orange;
+    border-radius: 10px;
+    color: white;
+}
