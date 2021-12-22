@@ -1,5 +1,6 @@
 .search-container{
     padding: 2%;
+    padding-top: 1%;
     width: 50%;
     height: 70%;
     border-radius: 10px;
@@ -21,11 +22,14 @@
     height: 25px;
     border-radius: 10px;
     text-align: center;
+    margin-top: 20px;
     margin-left: 25%;
     border: solid 1px black;
+    outline: orange;
 }
 
 .button-search{
+    cursor: pointer;
     margin: 0 auto;
     margin-top: 10px;
     width: 15%;
@@ -34,4 +38,8 @@
     justify-content: center;
     border-radius: 10px;
     border: none;
+}
+
+.button-search:hover{
+    background-color: orange;
 }

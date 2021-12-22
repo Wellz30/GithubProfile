@@ -15,4 +15,9 @@
     border: solid 2px orange;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
+}
+
+.button-close .button:hover{
+    background-color: orange;
 }
