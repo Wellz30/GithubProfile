@@ -28,14 +28,10 @@
 .button-search{
     margin: 0 auto;
     margin-top: 10px;
-    width: 10%;
+    width: 15%;
+    font-size: 1vw;
     display: flex;
     justify-content: center;
     border-radius: 10px;
     border: none;
-}
-
-.img-button{
-    width: 60%;
-    height: 60%;
 }

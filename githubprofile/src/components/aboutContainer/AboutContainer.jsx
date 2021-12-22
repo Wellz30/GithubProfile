@@ -7,7 +7,7 @@ export const AboutContainer = props =>{
     const text = props.text || "";
 
     return(
-        <div className="about-container">
+        <div className="about-container" onClick={props.onClick}>
             <div className="amount">
                 {amount}
             </div>

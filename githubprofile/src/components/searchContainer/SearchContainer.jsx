@@ -11,9 +11,7 @@ export const SearchContainer = props =>{
                 <input className="input" placeholder="Nickname" value={props.searchedValue} onChange={e => props.setSearchedValue(e.target.value)}></input>
             </div>
             <div>
-                <button className="button-search" onClick={props.searchButton}>
-                    <img className="img-button" src={lupa} alt="" />
-                </button>
+                <button className="button-search" onClick={props.searchButton}>Pesquisar</button>
             </div>
         </div>
     );
