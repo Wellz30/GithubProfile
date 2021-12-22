@@ -5,12 +5,15 @@ import {ProfilePic} from "./components/profilePic"
 import {ProfileAbout} from "./components/profileAbout/index"
 import {AboutContainer} from "./components/aboutContainer/"
 import {CloseRepos} from "./components/closeRepos/"
+import {Repository} from "./components/repository"
 import client from "./services/client"
 
 
 export default function App() {
 
     const [showRepos, setShowRepos] = useState(false);
+
+    const [repos, setRepos] = useState({});
 
     const [userData, setUserData] = useState({});
 
@@ -19,7 +22,9 @@ export default function App() {
     async function searchButton(){
         try{
             const response = await client.get(`/${searchedValue}`);
+            const repos = await client.get(`/${searchedValue}/repos`);
             setUserData(response.data)
+            setRepos(repos.data)
         } 
         catch (err){
             alert("Perfil não encontrado");
@@ -31,7 +36,12 @@ export default function App() {
             <SearchContainer searchButton={searchButton} searchedValue={searchedValue} setSearchedValue={setSearchedValue}/>
             {showRepos ? 
                 <Container>
-                    <CloseRepos closeRepos={() => {setShowRepos(false)}}/>
+                    <div>
+                        <CloseRepos closeRepos={() => {setShowRepos(false)}}/>
+                    </div>
+                    <div>
+                        <Repository repos={repos}/>
+                    </div>
                 </Container> 
             :
                 <Container>

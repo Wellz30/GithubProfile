@@ -1,0 +1,39 @@
+.repos{
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    
+}
+
+.repos:hover{
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+
+.repos-div-link{
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 2vw;
+}
+
+.repos-link{
+    text-decoration: none;
+    color: rgb(131, 106, 68);
+}
+
+.repos-link:hover{
+    color: rgb(211, 162, 72);
+    border-radius: 10px;
+}
+
+.repos-description{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.repos-description h3{
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 2vw;
+}
