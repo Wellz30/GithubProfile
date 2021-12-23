@@ -1,6 +1,9 @@
-.title{
+.title-container{
+    width: 100%;
+    height: 30px;
     margin: 0 auto;
     display: flex;
+    color: black;
     justify-content: center;
     font-size: 30px;
 }

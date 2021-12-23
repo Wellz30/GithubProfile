@@ -3,6 +3,8 @@
     margin-top: 50px;
     width: 80%;
     padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
 }
 
 .follow:hover{
@@ -31,13 +33,13 @@
 
 .repos-div-link{
     width: 100%;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 2vw;
 }
 
 .repos-link{
     text-decoration: none;
-    color: rgb(131, 106, 68);
+    color: rgb(255, 255, 255);
 }
 
 .repos-link:hover{
@@ -52,6 +54,6 @@
 
 .repos-description h3{
     width: 100%;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-size: 2vw;
 }
