@@ -4,7 +4,7 @@ import {SearchContainer} from "./components/searchContainer"
 import {ProfilePic} from "./components/profilePic"
 import {ProfileAbout} from "./components/profileAbout/index"
 import {AboutContainer} from "./components/aboutContainer/"
-import {CloseRepos} from "./components/closeRepos/"
+import {CloseContainer} from "./components/closeContainer"
 import {Repository} from "./components/repository"
 import client from "./services/client"
 
@@ -51,7 +51,7 @@ export default function App() {
             {showRepos ? 
                 <Container>
                     <div>
-                        <CloseRepos title="Repositories" closeRepos={() => {setShowRepos(false)}}/>
+                        <CloseContainer title="Repositories" closeContainer={() => {setShowRepos(false)}}/>
                     </div>
                     <div>
                         <Repository repos={repos}/>
@@ -63,7 +63,7 @@ export default function App() {
             {showStarred ? 
                 <Container>
                     <div>
-                        <CloseRepos title="Starred" closeRepos={() => {setShowStarred(false)}}/>
+                        <CloseContainer title="Starred" closeContainer={() => {setShowStarred(false)}}/>
                     </div>
                     <div>
                         <Repository repos={starred}/>
