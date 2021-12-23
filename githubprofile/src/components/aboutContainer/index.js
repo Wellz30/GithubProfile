@@ -1,1 +1,1 @@
-export {AboutContainer} from "./AboutContainer"
+export {AboutContainer} from "./AboutContainer";

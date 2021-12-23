@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import {Container} from "./components/container";
-import {SearchContainer} from "./components/searchContainer"
-import {ProfilePic} from "./components/profilePic"
-import {ProfileAbout} from "./components/profileAbout/index"
-import {AboutContainer} from "./components/aboutContainer/"
-import {CloseContainer} from "./components/closeContainer"
-import {Infor} from "./components/infor"
-import client from "./services/client"
+import {Container} from "../components/container";
+import {SearchContainer} from "../components/searchContainer";
+import {ProfilePic} from "../components/profilePic";
+import {ProfileAbout} from "../components/profileAbout/index";
+import {AboutContainer} from "../components/aboutContainer/";
+import {CloseContainer} from "../components/closeContainer";
+import {Infor} from "../components/infor";
+import {Api} from "../services";
 
 
-export default function App() {
+export const Home = _ => {
 
     const [showRepos, setShowRepos] = useState(false);
 
@@ -29,10 +29,10 @@ export default function App() {
 
     async function searchButton(){
         try{
-            const response = await client.get(`/${searchedValue}`);
-            const repos = await client.get(`/${searchedValue}/repos`);
-            const starred = await client.get(`/${searchedValue}/starred`);
-            const followers = await client.get(`/${searchedValue}/followers`);
+            const response = await Api.get(`/${searchedValue}`);
+            const repos = await Api.get(`/${searchedValue}/repos`);
+            const starred = await Api.get(`/${searchedValue}/starred`);
+            const followers = await Api.get(`/${searchedValue}/followers`);
             setUserData(response.data);
             setRepos(repos.data);
             setStarred(starred.data);

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProfileAbout.css"
+import "./ProfileAbout.css";
 
 export const ProfileAbout = props =>{
 

@@ -1,9 +1,10 @@
 import React from "react";
 import "./Infor.css";
 
-import {ProfilePic} from "../profilePic"
+import {ProfilePic} from "../profilePic";
 
 export const Infor = props =>{
+
     return (
         <div>
             {props.type ==="followers" ?

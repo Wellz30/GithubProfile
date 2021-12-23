@@ -5,7 +5,8 @@ import "./ProfilePic.css";
 export const ProfilePic = props => {
 
     const profilePic = props.profilePic || img;
-    const nickName = props.nickName || "NickName"
+
+    const nickName = props.nickName || "NickName";
 
     return(
         <>

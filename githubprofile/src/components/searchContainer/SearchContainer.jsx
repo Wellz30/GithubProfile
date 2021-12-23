@@ -1,6 +1,5 @@
 import React from "react";
-import "./SearchContainer.css"
-import lupa from "../../_assets/icons/lupa.svg"
+import "./SearchContainer.css";
 
 export const SearchContainer = props =>{
 
@@ -11,7 +10,7 @@ export const SearchContainer = props =>{
                 <input className="input" placeholder="Nickname" value={props.searchedValue} onChange={e => props.setSearchedValue(e.target.value)}></input>
             </div>
             <div>
-                <button className="button-search" onClick={props.searchButton}>Pesquisar</button>
+                <button className="button-search" onClick={props.searchButton}>Search</button>
             </div>
         </div>
     );
