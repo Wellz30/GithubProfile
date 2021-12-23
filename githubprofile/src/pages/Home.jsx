@@ -70,7 +70,7 @@ export const Home = _ => {
             {showProfile ?
             <>
                 <Container>
-                <CloseContainer closeContainer={() => {setShowProfile(false)}}/>
+                    <CloseContainer closeContainer={() => {setShowProfile(false)}}/>
                     <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
                     <ProfileAbout bio={userData?.bio}>
                         <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={fshowRepos}/>
