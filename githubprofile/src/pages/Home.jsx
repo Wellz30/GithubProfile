@@ -11,6 +11,8 @@ import {Api} from "../services";
 
 export const Home = _ => {
 
+    const [showProfile, setShowProfile] = useState(false);
+
     const [showRepos, setShowRepos] = useState(false);
 
     const [showStarred, setShowStarred] = useState(false);
@@ -37,23 +39,48 @@ export const Home = _ => {
             setRepos(repos.data);
             setStarred(starred.data);
             setFollowers(followers.data);
+            setShowProfile(true);
         } 
         catch (err){
             alert("Perfil não encontrado");
         }
     }
 
+    const fshowRepos = _ =>{
+            setShowRepos(true);
+            setShowFollowers(false);
+            setShowStarred(false);
+    }
+
+    const fshowFollowers = _ =>{
+            setShowFollowers(true);
+            setShowRepos(false);
+            setShowStarred(false);
+    }
+
+    const fshowStarred = _ =>{
+            setShowStarred(true);
+            setShowRepos(false);
+            setShowFollowers(false);
+    }
+
     return(
         <>
             <SearchContainer searchButton={searchButton} searchedValue={searchedValue} setSearchedValue={setSearchedValue}/>
-            <Container>
-                <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
-                <ProfileAbout bio={userData?.bio}>
-                    <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={_ => {setShowRepos(true); setShowFollowers(false); setShowStarred(false);}}/>
-                    <AboutContainer amount={userData?.followers} text="Followers" onClick={_ => {setShowFollowers(true); setShowRepos(false); setShowStarred(false);}}/>
-                    <AboutContainer amount={starred.length} text="Starred"  onClick={_ => {setShowStarred(true); setShowRepos(false); setShowFollowers(false);}}/>
-                </ProfileAbout>
-            </Container>
+            {showProfile ?
+            <>
+                <Container>
+                    <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
+                    <ProfileAbout bio={userData?.bio}>
+                        <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={fshowRepos}/>
+                        <AboutContainer amount={userData?.followers} text="Followers" onClick={fshowFollowers}/>
+                        <AboutContainer amount={starred.length} text="Starred"  onClick={fshowStarred}/>
+                    </ProfileAbout>
+                </Container>
+            </>
+            :
+            undefined
+            }   
             {showRepos ? 
                 <Container>
                     <div>
