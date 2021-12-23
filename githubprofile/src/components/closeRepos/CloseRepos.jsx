@@ -6,7 +6,7 @@ export const CloseRepos = props =>{
         <>
             <div className="button-close"><button className="button" onClick={props.closeRepos}>Close</button></div>
             <div className="title">
-                Repositorios
+                {props.title}
             </div>
         </>
     );

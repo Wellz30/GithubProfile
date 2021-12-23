@@ -13,7 +13,11 @@ export default function App() {
 
     const [showRepos, setShowRepos] = useState(false);
 
+    const [showStarred, setShowStarred] = useState(false);
+
     const [repos, setRepos] = useState({});
+
+    const [starred, setStarred] = useState({});
 
     const [userData, setUserData] = useState({});
 
@@ -23,8 +27,10 @@ export default function App() {
         try{
             const response = await client.get(`/${searchedValue}`);
             const repos = await client.get(`/${searchedValue}/repos`);
-            setUserData(response.data)
-            setRepos(repos.data)
+            const starred = await client.get(`/${searchedValue}/starred`);
+            setUserData(response.data);
+            setRepos(repos.data);
+            setStarred(starred.data);
         } 
         catch (err){
             alert("Perfil não encontrado");
@@ -34,25 +40,39 @@ export default function App() {
     return(
         <>
             <SearchContainer searchButton={searchButton} searchedValue={searchedValue} setSearchedValue={setSearchedValue}/>
+            <Container>
+                <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
+                <ProfileAbout bio={userData?.bio}>
+                    <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={_ => {setShowRepos(true)}}/>
+                    <AboutContainer amount={userData?.followers} text="Followers"/>
+                    <AboutContainer amount={"*"} text="Starred"  onClick={_ => {setShowStarred(true)}}/>
+                </ProfileAbout>
+            </Container>
             {showRepos ? 
                 <Container>
                     <div>
-                        <CloseRepos closeRepos={() => {setShowRepos(false)}}/>
+                        <CloseRepos title="Repositories" closeRepos={() => {setShowRepos(false)}}/>
                     </div>
                     <div>
                         <Repository repos={repos}/>
                     </div>
                 </Container> 
             :
-                <Container>
-                    <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
-                    <ProfileAbout bio={userData?.bio}>
-                        <AboutContainer amount={userData?.public_repos} text="Repositorios" onClick={()=>{setShowRepos(true)}}/>
-                        <AboutContainer amount={userData?.followers} text="Seguidores"/>
-                        <AboutContainer amount={userData?.following} text="Seguindo"/>
-                    </ProfileAbout>
-                </Container>
+                undefined
             }
+            {showStarred ? 
+                <Container>
+                    <div>
+                        <CloseRepos title="Starred" closeRepos={() => {setShowStarred(false)}}/>
+                    </div>
+                    <div>
+                        <Repository repos={starred}/>
+                    </div>
+                </Container> 
+            :
+                undefined
+            }
+            
         </>
     );
 }
