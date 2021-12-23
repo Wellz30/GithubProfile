@@ -1,0 +1,1 @@
+export {Infor} from "./Infor";

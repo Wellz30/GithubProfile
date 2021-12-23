@@ -1,7 +1,7 @@
 import React from "react";
-import "./Repository.css";
+import "./Infor.css";
 
-export const Repository = props =>{
+export const Infor = props =>{
     return (
         <div>
             {

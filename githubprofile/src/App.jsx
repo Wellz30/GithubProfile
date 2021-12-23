@@ -5,7 +5,7 @@ import {ProfilePic} from "./components/profilePic"
 import {ProfileAbout} from "./components/profileAbout/index"
 import {AboutContainer} from "./components/aboutContainer/"
 import {CloseContainer} from "./components/closeContainer"
-import {Repository} from "./components/repository"
+import {Infor} from "./components/infor"
 import client from "./services/client"
 
 
@@ -45,7 +45,7 @@ export default function App() {
                 <ProfileAbout bio={userData?.bio}>
                     <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={_ => {setShowRepos(true)}}/>
                     <AboutContainer amount={userData?.followers} text="Followers"/>
-                    <AboutContainer amount={"*"} text="Starred"  onClick={_ => {setShowStarred(true)}}/>
+                    <AboutContainer amount={starred.length} text="Starred"  onClick={_ => {setShowStarred(true)}}/>
                 </ProfileAbout>
             </Container>
             {showRepos ? 
@@ -54,7 +54,7 @@ export default function App() {
                         <CloseContainer title="Repositories" closeContainer={() => {setShowRepos(false)}}/>
                     </div>
                     <div>
-                        <Repository repos={repos}/>
+                        <Infor repos={repos}/>
                     </div>
                 </Container> 
             :
@@ -66,7 +66,7 @@ export default function App() {
                         <CloseContainer title="Starred" closeContainer={() => {setShowStarred(false)}}/>
                     </div>
                     <div>
-                        <Repository repos={starred}/>
+                        <Infor repos={starred}/>
                     </div>
                 </Container> 
             :
