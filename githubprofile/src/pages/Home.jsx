@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Container} from "../components/container";
 import {SearchContainer} from "../components/searchContainer";
 import {ProfilePic} from "../components/profilePic";
@@ -49,9 +49,9 @@ export const Home = _ => {
             <Container>
                 <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
                 <ProfileAbout bio={userData?.bio}>
-                    <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={_ => {setShowRepos(true)}}/>
-                    <AboutContainer amount={userData?.followers} text="Followers" onClick={_ => {setShowFollowers(true)}}/>
-                    <AboutContainer amount={starred.length} text="Starred"  onClick={_ => {setShowStarred(true)}}/>
+                    <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={_ => {setShowRepos(true); setShowFollowers(false); setShowStarred(false);}}/>
+                    <AboutContainer amount={userData?.followers} text="Followers" onClick={_ => {setShowFollowers(true); setShowRepos(false); setShowStarred(false);}}/>
+                    <AboutContainer amount={starred.length} text="Starred"  onClick={_ => {setShowStarred(true); setShowRepos(false); setShowFollowers(false);}}/>
                 </ProfileAbout>
             </Container>
             {showRepos ? 
