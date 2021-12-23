@@ -15,9 +15,13 @@ export default function App() {
 
     const [showStarred, setShowStarred] = useState(false);
 
+    const [showFollowers, setShowFollowers] = useState(false);
+
     const [repos, setRepos] = useState({});
 
     const [starred, setStarred] = useState({});
+
+    const [followers, setFollowers] = useState({});
 
     const [userData, setUserData] = useState({});
 
@@ -28,9 +32,11 @@ export default function App() {
             const response = await client.get(`/${searchedValue}`);
             const repos = await client.get(`/${searchedValue}/repos`);
             const starred = await client.get(`/${searchedValue}/starred`);
+            const followers = await client.get(`/${searchedValue}/followers`);
             setUserData(response.data);
             setRepos(repos.data);
             setStarred(starred.data);
+            setFollowers(followers.data);
         } 
         catch (err){
             alert("Perfil não encontrado");
@@ -44,7 +50,7 @@ export default function App() {
                 <ProfilePic profilePic={userData?.avatar_url} nickName={userData?.name}/>
                 <ProfileAbout bio={userData?.bio}>
                     <AboutContainer amount={userData?.public_repos} text="Repositories" onClick={_ => {setShowRepos(true)}}/>
-                    <AboutContainer amount={userData?.followers} text="Followers"/>
+                    <AboutContainer amount={userData?.followers} text="Followers" onClick={_ => {setShowFollowers(true)}}/>
                     <AboutContainer amount={starred.length} text="Starred"  onClick={_ => {setShowStarred(true)}}/>
                 </ProfileAbout>
             </Container>
@@ -54,7 +60,7 @@ export default function App() {
                         <CloseContainer title="Repositories" closeContainer={() => {setShowRepos(false)}}/>
                     </div>
                     <div>
-                        <Infor repos={repos}/>
+                        <Infor objects={repos}/>
                     </div>
                 </Container> 
             :
@@ -66,7 +72,19 @@ export default function App() {
                         <CloseContainer title="Starred" closeContainer={() => {setShowStarred(false)}}/>
                     </div>
                     <div>
-                        <Infor repos={starred}/>
+                        <Infor objects={starred}/>
+                    </div>
+                </Container> 
+            :
+                undefined
+            }
+            {showFollowers ? 
+                <Container>
+                    <div>
+                        <CloseContainer title="Followers" closeContainer={() => {setShowFollowers(false)}}/>
+                    </div>
+                    <div>
+                        <Infor type="followers" objects={followers}/>
                     </div>
                 </Container> 
             :
